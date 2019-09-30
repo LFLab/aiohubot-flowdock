@@ -116,8 +116,9 @@ class Flowdock(Adapter):
             self.robot.logger.info(f"Flowdock: listening to flows: {names}")
 
         @stream.on("clientError")
-        def client_error(error):
-            self.robot.logger.error(f"Flowdock: client error: {error}")
+        async def client_error(error):
+            self.robot.logger.error(f"Flowdock: client error: {error}", exc_info=True)
+            await self.reconnect("Client Error")
 
         @stream.on("disconnected")
         def disconnected():
