@@ -5,7 +5,7 @@ from asyncio import ensure_future
 from aiohubot import Adapter, TextMessage
 from aioflowdock import Session
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 class Flowdock(Adapter):
