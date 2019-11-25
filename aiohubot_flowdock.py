@@ -79,6 +79,7 @@ class Flowdock(Adapter):
         return [f for f in self.flows if f.get("joined") and f.get("open")]
 
     def user_from_id(self, id, **options):
+        id = int(id)  # ???: make sure `id` would be *int* only.
         return self.robot.brain.user_for_id(id, **options)
 
     def change_user_nick(self, id, new_nick):
