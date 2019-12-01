@@ -5,7 +5,7 @@ from asyncio import ensure_future
 from aiohubot import Adapter, TextMessage
 from aioflowdock import Session
 
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 
 class Flowdock(Adapter):
@@ -79,7 +79,7 @@ class Flowdock(Adapter):
         return [f for f in self.flows if f.get("joined") and f.get("open")]
 
     def user_from_id(self, id, **options):
-        return self.robot.brain.user_for_id(id, **options)
+        return self.robot.brain.user_for_id(int(id), **options)
 
     def change_user_nick(self, id, new_nick):
         if id in self.robot.brain.data.users():
